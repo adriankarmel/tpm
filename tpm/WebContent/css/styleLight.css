@@ -1,0 +1,271 @@
+body {
+    font-family: Lato, sans-serif;
+}
+
+.labelCenter {
+	display:table-cell; 
+	vertical-align:middle; 
+	text-align:center;
+}
+
+.labelColorOne{				
+	color: #e14658;
+	font-weight: bold;
+}
+
+.labelColorSmall{
+	color:#000000;
+	font-weight: bold;	
+}
+
+.labelColorMsg{
+	color:#009900;
+	font-weight: bold;	
+	font-size:16px;
+}
+
+.labelColorSmallTwo{
+	color:#d3d3d3;
+}
+
+.radioLabelColorOne{
+	color:#000000;
+	font-weight: bold;
+}
+
+.labelRedBold{
+	color:#e14658;
+	font-weight: bold;
+}
+
+hr{
+	border: solid #006699;
+    border-width: 1px 0 0; 
+    clear: both; 
+}
+
+.ErrorLabel{
+	display:none;
+	font-family:Lato,sans-serif;
+	font-weight:bold;
+	color:#e14658;
+}
+
+/* ----- start M E N U ----- */
+
+.main {
+    transition: margin-left .5s;
+    padding: 16px;
+    color:#c20008;
+    background-color: #e9e9e9;
+}
+			
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #bdbdbd;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FFFFFF;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #c20008;		  
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* ----- end M E N U ----- */			
+
+.dotLigth{
+  height: 10px;
+  width: 10px;
+   border:1px solid red; 
+  background-color: #ffffff;    
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+.dotGrey {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotDark {
+  height: 25px;
+  width: 25px;
+  background-color: #545454;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn-primary-outline {
+  background-color: transparent;
+  color: #696969;
+}
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: transparent !important;
+    border-color: #696969 !important;
+    color: #696969 !important;
+}
+
+.btn-primary:hover{
+	background-color: #bdbdbd !important;	
+	color: #ffffff !important;
+}
+
+.leyendClass{
+	 font-weight:bold important; 
+	 color: #ab2328 !important;	
+}
+
+/* ----- start G R I L L A ----- */
+
+/*	
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}			
+
+.trt:nth-child(even) {background: #0e6a85}
+.trt:nth-child(odd) {background: #003366 }	 
+
+*/
+
+/*.trt{
+ 	border-top:  1px solid #e5e5e5;
+}
+*/
+.trtDisable{
+ 	border-top:  1px solid #e5e5e5;
+ 	background-color: #e5e5e5;
+}
+	
+.trt:hover{
+	background-color: #e5e5e5;
+ 	font-weight: bold;
+}
+	
+a:link, :visited{
+	text-decoration: none;
+	color: #222;
+}
+
+
+.row {
+	  margin-bottom: 0.5rem;
+	}
+	.row .row {
+	  margin-top: 0.5rem;
+	  margin-bottom: 0;
+	}
+	[class*="col-"] {
+	  padding-top: 0.3rem;
+	  padding-bottom: 0.3rem;
+	  border: 1px solid rgba(86, 61, 124, .2);
+	}		
+
+	
+/* ----- end G R I L L A ----- */
+	
+/* ----- start B O T O N   T O P  ----- */
+		
+.myBtn {
+	font-weight:bold;
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 99;
+	font-size: 12px;
+	border: none;
+	outline: none;
+	background-color: #c20008;
+	color: white;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 180px;
+}
+
+.myBtn:hover {
+	background-color: grey;
+	transform:scale(1.3);
+	color: white;
+}
+	
+.btn-circle.btn-lg {
+	  width: 30px;
+	  height: 30px;
+	  text-align: center;
+	  padding: 6px 0px; 
+	  font-size: 12px;
+	  line-height: 1.428571429;
+	  border-radius: 15px;
+	  border: 1px solid grey;
+	  background-color: white;
+}
+	
+/* ----- end B O T O N   T O P  ----- */
+
+ #rowSmall{
+   display:none !important;
+}
+
+	
+			
+@media screen and (max-height: 450px) {
+   .sidenav {padding-top: 15px;}
+   .sidenav a {font-size: 18px;}
+   
+    .labelCenter{
+    	display:none;
+    }
+    
+     #rowBig{
+   		display:none !important;
+    }
+    
+    #rowSmall{
+  	  display:block !important;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  	#left { display: none; } /* show it on small screens */
+  
+    #rowBig{
+   		display:none !important;
+    }
+    
+    #rowSmall{
+  	   display: block !important;
+    }
+}

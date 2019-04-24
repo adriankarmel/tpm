@@ -1,0 +1,218 @@
+body {
+    font-family: Lato, sans-serif;
+     background-color:grey;
+}
+
+.labelCenter {
+	display:table-cell; 
+	vertical-align:middle; 
+	text-align:center;
+}
+
+.labelColorOne{				
+	color:#ffff4c;
+	font-weight: bold;
+}
+
+.labelColorSmall{
+	color:#ffffff;
+	font-weight: bold;	
+}
+
+.labelColorMsg{
+	color:#009900;
+	font-weight: bold;	
+	font-size:14px;
+}
+
+.radioLabelColorOne{
+	color:#ffffff;
+	font-weight: bold;
+}
+
+.labelRedBold{
+	color:#e14658;
+	font-weight: bold;
+}
+
+hr{
+	border: solid #ffffff;
+    border-width: 1px 0 0; 
+    clear: both; 
+}
+
+/* ----- start M E N U ----- */
+	
+.main {
+    transition: margin-left .5s;
+    padding: 16px;
+    color:white;
+}
+			
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #bdbdbd;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FFFFFF;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;		  
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* ----- end M E N U ----- */			
+
+.dotLigth{
+  height: 10px;
+  width: 10px;
+   border:1px solid red; 
+  background-color: #ffffff;    
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotGrey {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotDark {
+  height: 25px;
+  width: 25px;
+  background-color: #545454;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn-primary-outline {
+  background-color: transparent;
+  color: #696969;
+}
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: transparent !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover{
+	background-color: #bdbdbd !important;	
+	color: #ffffff !important;
+}
+
+.leyendClass{
+	 font-weight:bold important; 
+	 color: #ab2328 !important;	
+}
+
+/* ----- start G R I L L A ----- */
+
+/*	
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}			
+
+.trt:nth-child(even) {background: #0e6a85}
+.trt:nth-child(odd) {background: #003366 }	 
+
+*/
+
+.trt{
+ 	border-top:  1px solid #e5e5e5;
+}
+
+.trtDisable{
+ 	border-top:  1px solid #e5e5e5;
+ 	background-color: #e5e5e5;
+}
+	
+.trt:hover{
+	background-color: #e5e5e5;
+ 	font-weight: bold;
+}
+	
+a:link, :visited{
+	text-decoration: none;
+	color: #ffffff;
+}
+	
+/* ----- end G R I L L A ----- */
+	
+/* ----- start B O T O N   T O P  ----- */
+		
+#myBtn {
+	font-weight:bold;
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 99;
+	font-size: 12px;
+	border: none;
+	outline: none;
+	background-color: #16499A;
+	color: white;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 180px;
+}
+
+#myBtn:hover {
+	background-color: #222464;
+	transform:scale(1.3);
+	color: white;
+}
+	
+.btn-circle.btn-lg {
+	  width: 30px;
+	  height: 30px;
+	  text-align: center;
+	  padding: 6px 0px; 
+	  font-size: 12px;
+	  line-height: 1.428571429;
+	  border-radius: 15px;
+	  border: 1px solid grey;
+	  background-color: white;
+}
+	
+/* ----- end B O T O N   T O P  ----- */
+			
+@media screen and (max-height: 450px) {
+   .sidenav {padding-top: 15px;}
+   .sidenav a {font-size: 18px;}
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  #left { display: none; }; /* show it on small screens */
+}
