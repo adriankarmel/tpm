@@ -48,15 +48,14 @@
 					<div class="col labelColorOne">
 						<h2>Add Worker</h2>
 					</div>						
-				</div>
-				<hr>	
+				</div>					
 				<div class="row">		
 					<div class="col labelColorMsg">
 						<%= request.getAttribute("Msg") == null ? "" : request.getAttribute("Msg") %>
 					</div>
 					<hr>	
 				</div>
-				
+				<hr>
 				<div class="labelColorOne">
 					<h5>Personal Information</h5>
 				</div>
@@ -64,12 +63,10 @@
 				<div class="form-group">
 					<div class="row">
 						 <div class="col-md-6">
-							<label class="control-label labelColorSmall" for="FirstName">First Name</label>
 							<input class="form-control" type="text" name="FirstName" id="FirstName" placeholder="First Name" value="<%= request.getAttribute("FirstName") == null ? "" : request.getAttribute("FirstName") %>" maxlength="25" autofocus="autofocus" required> 
-					 		<label class="ErrorLabel" id="Error_FirstName">Field Is Required</label>
+					 		<small class="ErrorLabel" id="Error_FirstName">Field Is Required</small>
 					 	 </div>
 						 <div class="col-md-6">
-							<label class="control-label labelColorSmall" for="LastName">Last Name</label>
 							<input class="form-control" type="text" name="LastName" id="LastName" placeholder="Last Name" value="<%= request.getAttribute("LastName") == null ? "" : request.getAttribute("LastName") %>" maxlength="25" required> 
 						 </div>
 					</div>
@@ -81,20 +78,20 @@
 				<div class="form-group">
 					<div class="row">
 						 <div class="col-md-6">
-							<label class="control-label labelColorSmall" for="Email">Email
+						<%-- 	<label class="control-label labelColorSmall" for="Email">Email
 							<a href="mailto:<%= request.getAttribute("Email") == null ? "" : request.getAttribute("Email") %>">
 								<img border="0" src="../tpm/img/email.png" width="20" height="20" data-toggle="tooltip" data-placement="top" title="Email">
 							</a>
-							</label>
+							</label> --%>
 							<input class="form-control text-lowercase" type="text" name="Email" id="Email" placeholder="Email" value="<%= request.getAttribute("Email") == null ? "" : request.getAttribute("Email") %>" maxlength="80"> 
-					 	 	<label class="ErrorLabel" id="Error_Email">Field Is Required</label>
+					 	 	<small class="ErrorLabel" id="Error_Email">Field Is Required</small>
 					 	 </div>
 						 <div class="col-md-6">
-							<label class="control-label labelColorSmall" for="Phone">Phone
+						<%-- 	<label class="control-label labelColorSmall" for="Phone">Phone
 							<a href="tel:<%= request.getAttribute("Phone") == null ? "" : request.getAttribute("Phone") %>">
 								<img border="0" src="../tpm/img/phone.png" width="20" height="20" data-toggle="tooltip" data-placement="top" title="Call Phone">
 							</a>		
-							</label>
+							</label> --%>
 							<input class="form-control" type="text" name="Phone" id="Phone" placeholder="Phone" value="<%= request.getAttribute("Phone") == null ? "" : request.getAttribute("Phone") %>" maxlength="20"> 
 						 </div>
 					</div>
@@ -103,16 +100,14 @@
 			    <div class="form-group">
 				    <div class="row">
 				  	    <div class="col-md-12">						 
-							<label class="control-label labelColorSmall" for="HourRate">Hour Rate</label>
 							<input name="HourRate" id="HourRate" Class="form-control" value="<%= request.getAttribute("HourRate") == null ? "" : request.getAttribute("HourRate") %>" placeholder="Hour Rate">				
-				 			<label class="ErrorLabel" id="Error_HourRate">Field Is Required</label>
+				 			<small class="ErrorLabel" id="Error_HourRate">Field Is Required</small>
 				 	 	</div>
 				 	 </div>
 				</div>	 		
 			 	<div class="form-group">
 			 		<div class="row">
 			 			<div class="col-md-12">
-  							<label class="control-label labelColorSmall" for="comment">Comment</label>
   							<textarea class="form-control" rows="5" maxlength="500" id="Comments" name="Comments" placeholder="Comments"><%= request.getAttribute("Comments") == null ? "" : request.getAttribute("Comments") %></textarea>
 						</div>
 					</div>

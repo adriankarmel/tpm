@@ -17,6 +17,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> 
 		 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -43,12 +44,10 @@
 				index.Action.value = 'Delete';
 				index.submit();				
 			}	
-		</script>
-		
-			
+		</script>		
 	</head>
 	
-	<body id="page-top">
+	<body id="page-top" style="">
 		<form name="index" id="index" action="Job" method="post">
 			<button onclick="topFunction();return false;" id="myBtn" class="myBtn" title="Go to top">Top</button>
 			
@@ -58,8 +57,8 @@
 			<div class="container">				
 				<div class="row">
 					<div class="col labelColorOne">
-						<h2>List Jobs</span>
-							<button type="button" class="btn btn-outline-dark" onclick="window.location.href='job.jsp'; return false;" title="Add Job">+</button>
+						<h2>List Jobs
+							<button type="button" class="btn btn-outline-dark" onclick="window.location.href='job.jsp';return false;" title="Add Job">+</button>
 						</h2>
 					</div>	
 				</div>

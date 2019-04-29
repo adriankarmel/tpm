@@ -66,14 +66,12 @@
 				<div class="form-group">
 					<div class="row">
 						 <div class="col-md-6">
-							<label class="control-label labelColorSmall" for="FirstName">First Name</label>
 							<input class="form-control" type="text" name="FirstName" id="FirstName" placeholder="First Name" value="<%= request.getAttribute("FirstName") == null ? "" : request.getAttribute("FirstName") %>" maxlength="25" autofocus="autofocus">
-							<label class="ErrorLabel" id="Error_FirstName">Field Is Required</label> 
+							<small class="ErrorLabel" id="Error_FirstName">Field Is Required</small> 
 					 	 </div>
 						 <div class="col-md-6">
-							<label class="control-label labelColorSmall" for="LastName">Last Name</label>
 							<input class="form-control" type="text" name="LastName" id="LastName" placeholder="Last Name" value="<%= request.getAttribute("LastName") == null ? "" : request.getAttribute("LastName") %>" maxlength="25"> 
-							<label class="ErrorLabel" id="Error_LastName">Field Is Required</label>
+							<small class="ErrorLabel" id="Error_LastName">Field Is Required</small>
 						 </div>
 					</div>
 				</div>		
@@ -86,15 +84,15 @@
 					</h5>	
 				</div>	
 			 	<div class="form-group">
-	   				 <label class="control-label labelColorSmall" for="Address">Address</label>
-	  				 <input type="text" class="form-control" id="Address" name="Address" value="<%= request.getAttribute("Address") == null ? "" : request.getAttribute("Address") %>" placeholder="Address" maxlength="50">
-	  				<label class="ErrorLabel" id="Error_Address">Field Is Required</label>
+	   			    <input type="text" class="form-control" id="Address" name="Address" value="<%= request.getAttribute("Address") == null ? "" : request.getAttribute("Address") %>" placeholder="Current Address" maxlength="50">
+	  				<small class="ErrorLabel" id="Error_Address">Field Is Required</small>
 	  			</div>	
  				<div class="form-group">
 						<div class="row">
 							 <div class="col-md-4">
-								<label class="control-label labelColorSmall" for="CountryId">Country</label>
+								<!-- <label class="control-label labelColorSmall" for="CountryId">Country</label> -->
 								<select name="CountryId" id="CountryId" class="form-control">
+									
 								<% 
 									 ConnectionDB db = new ConnectionDB();
 									 Connection conn = db.getConnection();
@@ -104,13 +102,15 @@
 									 String CountryName = "";
 									 
 									 if(conn != null) {
-									 	sSql =  "SELECT id, name FROM country";				 
+									 	 sSql =  "SELECT id, name FROM country";				 
 									 
 										 Statement stmt = conn.createStatement();
 										 ResultSet rs  = stmt.executeQuery(sSql); 
-										 String passedCountryId = (request.getAttribute("CountryId") == null) ? "" : request.getAttribute("CountryId").toString();
+										 String passedCountryId = (request.getAttribute("CountryId") == null) ? "" : request.getAttribute("CountryId").toString(); %>
 									 
-										 while (rs.next()) { 
+									    <option value="0" <%= CountryId.equals(0) ? "selected" : "" %>> Select Country </option>
+									    
+									    <% while (rs.next()) { 
 											CountryId   = rs.getString("id");
 											CountryName = rs.getString("name");	%>
 											  
@@ -124,23 +124,29 @@
 									
 									%>										
 								</select>
-								<label class="ErrorLabel" id="Error_CountryId">Field Is Required</label>
+								<small class="ErrorLabel" id="Error_CountryId">Field Is Required</small>
 							 </div>
 						
 							 <div class="col-md-4">
-								<label class="control-label labelColorSmall" for="ProvinceId">Province</label>
+								<!-- <label class="control-label labelColorSmall" for="ProvinceId">Province</label> -->
 								<select name="ProvinceId" id="ProvinceId" class="form-control">
 								<%								
-									String sqlProvince = " SELECT id, name "  +
-														 "   FROM province";
+									
+									String ProvinceId = "";
+									String ProvinceName = "";
+									String sqlProvince = "";
+									
+									sqlProvince = " SELECT id, name FROM province";
 		
 									Statement stmtProvince = conn.createStatement();
 									ResultSet resProvince  = stmtProvince.executeQuery(sqlProvince);
 		
 									String passedProvinceId = (request.getAttribute("ProvinceId") == null) ? "" : request.getAttribute("ProvinceId").toString();
-									String ProvinceId, ProvinceName;
-		
-									while(resProvince.next()){
+									%>
+									
+									<option value="0" <%= ProvinceId.equals(0) ? "selected" : "" %>> Select Province </option>
+									
+									<% while(resProvince.next()){
 											ProvinceId   = resProvince.getString("id");
 											ProvinceName = resProvince.getString("name");	%>
 											  
@@ -152,12 +158,12 @@
 									stmtProvince.close();
 									%>										
 								</select>
-								<label class="ErrorLabel" id="Error_ProvinceId">Field Is Required</label>
+								<small class="ErrorLabel" id="Error_ProvinceId">Field Is Required</small>
 							 </div>
 							 <div class="col-md-4">
-								<label class="control-label labelColorSmall" for="PostalCode">Postal Code</label>
+								<!-- <label class="control-label labelColorSmall" for="PostalCode">Postal Code</label> -->
 								<input class="form-control text-uppercase" type="text" name="PostalCode" id="PostalCode" placeholder="Postal Code" value="<%= request.getAttribute("PostalCode") == null ? "" : request.getAttribute("PostalCode") %>" maxlength="10"> 
-							 	<label class="ErrorLabel" id="Error_PostalCode">Field Is Required</label>
+							 	<small class="ErrorLabel" id="Error_PostalCode">Field Is Required</small>
 							 </div> 
 						</div>	
 					</div>						
@@ -170,13 +176,12 @@
 					</h5>
 				</div>	
 			 	<div class="form-group">
-	   				 <label class="control-label labelColorSmall" for="AddressNew">Address</label>
-	  				 <input type="text" class="form-control" id="AddressNew" name="AddressNew" value="<%= request.getAttribute("AddressNew") == null ? "" : request.getAttribute("AddressNew") %>" placeholder="New Address" maxlength="50">
+	   				 <input type="text" class="form-control" id="AddressNew" name="AddressNew" value="<%= request.getAttribute("AddressNew") == null ? "" : request.getAttribute("AddressNew") %>" placeholder="New Address" maxlength="50">
 	  			</div>	
  				<div class="form-group">
 						<div class="row">
 							 <div class="col-md-4">
-								<label class="control-label labelColorSmall" for="CountryIdNew">Country</label>
+								<!-- <label class="control-label labelColorSmall" for="CountryIdNew">Country</label> -->
 								<select name="CountryIdNew" id="CountryIdNew" class="form-control">
 								<% 
 																
@@ -189,9 +194,11 @@
 									 
 										 Statement stmtN = conn.createStatement();
 										 ResultSet rsN   = stmtN.executeQuery(sSqlN); 
-										 String passedCountryIdN = (request.getAttribute("CountryIdNew") == null) ? "" : request.getAttribute("CountryIdNew").toString();
-									 
-										 while (rsN.next()) { 
+										 String passedCountryIdN = (request.getAttribute("CountryIdNew") == null) ? "" : request.getAttribute("CountryIdNew").toString();%>
+									 	
+									 	 <option value="0" <%= CountryIdN.equals(0) ? "selected" : "" %>> Select Country</option>
+										
+										 <%while (rsN.next()) { 
 											CountryIdN   = rsN.getString("id");
 											CountryNameN = rsN.getString("name"); %>
 											  
@@ -209,20 +216,23 @@
 							 </div>
 						
 							 <div class="col-md-4">
-								<label class="control-label labelColorSmall" for="ProvinceIdNew">Province</label>
+								<!-- <label class="control-label labelColorSmall" for="ProvinceIdNew">Province</label> -->
 								<select name="ProvinceIdNew" id="ProvinceIdNew" class="form-control">
-								<%								
+								<%		
 								
-									String sqlProvinceN = " SELECT id, name "  +
-														 "   FROM province";
+									String ProvinceIdN = ""; 
+									String ProvinceNameN = "";;
+								
+									String sqlProvinceN = " SELECT id, name FROM province";
 		
 									Statement stmtProvinceN = conn.createStatement();
 									ResultSet resProvinceN  = stmtProvinceN.executeQuery(sqlProvinceN);
 		
-									String passedProvinceIdN = (request.getAttribute("ProvinceIdNew") == null) ? "" : request.getAttribute("ProvinceIdNew").toString();
-									String ProvinceIdN, ProvinceNameN;
+									String passedProvinceIdN = (request.getAttribute("ProvinceIdNew") == null) ? "" : request.getAttribute("ProvinceIdNew").toString(); %>
+									
+									<option value="0" <%= ProvinceIdN.equals(0) ? "selected" : "" %>> Select Province</option>
 		
-									while(resProvinceN.next()){
+									<% while(resProvinceN.next()){
 											ProvinceIdN   = resProvinceN.getString("id");
 											ProvinceNameN = resProvinceN.getString("name");	%>
 											  
@@ -236,7 +246,7 @@
 								</select>								
 							 </div>
 							 <div class="col-md-4">
-								<label class="control-label labelColorSmall" for="PostalCodeNew">Postal Code</label>
+								<!-- <label class="control-label labelColorSmall" for="PostalCodeNew">Postal Code</label> -->
 								<input class="form-control text-uppercase" type="text" name="PostalCodeNew" id="PostalCodeNew" placeholder="New Postal Code" value="<%= request.getAttribute("PostalCodeNew") == null ? "" : request.getAttribute("PostalCodeNew") %>" maxlength="10"> 
 							 </div> 
 						</div>	
@@ -248,34 +258,33 @@
 					<div class="form-group">
 						<div class="row">
 							 <div class="col-md-6">
-								<label class="control-label labelColorSmall" for="PhoneOne">Phone One
+								<%-- <label class="control-label labelColorSmall" for="PhoneOne">Phone One
 								<a href="tel:<%= request.getAttribute("PhoneOne") == null ? "" : request.getAttribute("PhoneOne") %>">
 									<img border="0" src="../tpm/img/phone.png" width="20" height="20" data-toggle="tooltip" data-placement="top" title="Call Phone">
 								</a>
-								</label>
+								</label> --%>
 								<input class="form-control" type="text" name="PhoneOne" id="PhoneOne" placeholder="Phone One" value="<%= request.getAttribute("PhoneOne") == null ? "" : request.getAttribute("PhoneOne") %>" maxlength="20"> 
-						 	 	<label class="ErrorLabel" id="Error_phoneOne">Field Is Required</label>
+						 	 	<small class="ErrorLabel" id="Error_phoneOne">Field Is Required</small>
 						 	 </div>
 							 <div class="col-md-6">
-								<label class="control-label labelColorSmall" for="PhoneTwo">Phone Two
+					<%-- 			<label class="control-label labelColorSmall" for="PhoneTwo">Phone Two
 								<a href="tel:<%= request.getAttribute("PhoneTwo") == null ? "" : request.getAttribute("PhoneTwo") %>">
 									<img border="0" src="../tpm/img/phone.png" width="20" height="20" data-toggle="tooltip" data-placement="top" title="Call Phone">
 								</a>	
-								</label>
+								</label> --%>
 								<input class="form-control" type="text" name="PhoneTwo" id="PhoneTwo" placeholder="Phone Two" value="<%= request.getAttribute("PhoneTwo") == null ? "" : request.getAttribute("PhoneTwo") %>" maxlength="20"> 
 							 </div>
 						</div>
 					</div>	
 					<div class="form-group">							
-						<label class="control-label labelColorSmall" for="Email">Email
+					<%-- 	<label class="control-label labelColorSmall" for="Email">Email
 						<a href="mailto:<%= request.getAttribute("Email") == null ? "" : request.getAttribute("Email") %>">
 							<img border="0" src="../tpm/img/email.png" width="20" height="20" data-toggle="tooltip" data-placement="top" title="Email">
-						</a>
+						</a> --%>
 						</label>
 						<input class="form-control text-lowercase" type="text" name="Email" id="Email" placeholder="Email" value="<%= request.getAttribute("Email") == null ? "" : request.getAttribute("Email") %>" maxlength="80">
 					</div> 	
 				 	<div class="form-group">
-	  					<label class="control-label labelColorSmall" for="comment">Comment</label>
 	  					<textarea class="form-control" rows="5" id="Comments" name="Comments" maxlength="500" placeholder="Comments"><%= request.getAttribute("Comments") == null ? "" : request.getAttribute("Comments") %></textarea>
 					</div> 								
 				 	<hr>	

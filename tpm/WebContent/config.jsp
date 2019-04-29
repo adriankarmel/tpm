@@ -97,7 +97,6 @@
 					
 				</div>
 				<div class="form-group">
-					<label class="control-label labelColorSmall" for="CompanyName">Company Name</label>
 					<input type="text" name="CompanyName" id="CompanyName" Class="form-control" value="<%= res.getString("company_name") == null ? "" : res.getString("company_name") %>" placeholder="Company Name" maxlength="50" autofocus="autofocus" />		 	
 			 	</div>
 			 	<hr>						
@@ -105,13 +104,12 @@
 					<h5>Address Information</h5>
 				</div>			
 			 	<div class="form-group">
-	   				 <label class="control-label labelColorSmall" for="Address">Address</label>
-	  				 <input type="text" class="form-control" id="Address" name="Address" value="<%= res.getString("address") == null ? "" : res.getString("address") %>" placeholder="Address" maxlength="50">
+	   				 <input type="text" class="form-control" id="Address" name="Address" value="<%= res.getString("address") == null ? "" : res.getString("address") %>" placeholder="Address" maxlength="50">
 	  			</div>	
 				<div class="form-group">
 					<div class="row">
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="CountryId">Country</label>
+							<!-- <label class="control-label labelColorSmall" for="CountryId">Country</label> -->
 							<select name="CountryId" id="CountryId" class="form-control">
 							<% 							
 								 sSql = "";
@@ -121,8 +119,11 @@
 							 	 sSql =  "SELECT id, name FROM country";
 							
 							 	 Statement stmtCountry = conn.createStatement();
-								 ResultSet rs = stmtCountry.executeQuery(sSql); 
+								 ResultSet rs = stmtCountry.executeQuery(sSql); %>
 							 
+								 <option value="0" <%= CountryId.equals(0) ? "selected" : "" %>> Select Country</option>
+								 
+								 <% 
 								 while (rs.next()) { 
 									CountryId   = rs.getString("id");
 									CountryName = rs.getString("name");	%>
@@ -139,23 +140,27 @@
 						 </div>
 					
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="ProvinceId">Province</label>
+							<!-- <label class="control-label labelColorSmall" for="ProvinceId">Province</label> -->
 							<select name="ProvinceId" id="ProvinceId" class="form-control">
 							<%						 
-								String sqlProvince = " SELECT id, name "  +
-													 "   FROM province";
+								
+								String ProvinceId = "";
+								String ProvinceName = "";
+								String sqlProvince = "";
+								
+								sqlProvince = " SELECT id, name FROM province";
 	
 								Statement stmtProvince = conn.createStatement();
-								ResultSet resProvince  = stmtProvince.executeQuery(sqlProvince);
+								ResultSet resProvince  = stmtProvince.executeQuery(sqlProvince); %>
+								
+								<option value="0" <%= ProvinceId.equals(0) ? "selected" : "" %>> Select Province</option>
 	
-								String ProvinceId, ProvinceName;
-	
-								while(resProvince.next()){
+								<% while(resProvince.next()){
 										ProvinceId   = resProvince.getString("id");
 										ProvinceName = resProvince.getString("name");	%>
 										  
 										<option value="<%= ProvinceId %>" <%= ProvinceId.equals(sConfigProvinceId) ? "selected" : "" %>> <%= ProvinceName %> </option>		     	
-							 <%}	
+							   <%}	
 								
 								resProvince.close();
 								stmtProvince.close();
@@ -163,7 +168,7 @@
 							</select>
 						 </div>
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="PostalCode">Postal Code</label>
+							<!-- <label class="control-label labelColorSmall" for="PostalCode">Postal Code</label> -->
 							<input class="form-control" type="text" name="PostalCode" id="PostalCode" style="text-transform:uppercase" placeholder="Postal Code" value="<%= res.getString("postal_code") == null ? "" : res.getString("postal_code") %>" maxlength="10"> 
 						 </div> 
 					</div>	
@@ -175,15 +180,12 @@
 				<div class="form-group">
 					<div class="row">
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="PhoneOne">Phone One</label>
 							<input class="form-control bfh-phone" data-format="(ddd) ddd-dddd"" type="text" name="phoneOne" id="phoneOne" placeholder="Phone One" value="<%= res.getString("phone_one") == null ? "" : res.getString("phone_one") %>" maxlength="20"> 
 					 	 </div>
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="PhoneTwo">Phone Two</label>
 							<input class="form-control" type="text" name="PhoneTwo" id="PhoneTwo" placeholder="Phone Two" value="<%= res.getString("phone_two") == null ? "" : res.getString("phone_two") %>" maxlength="20"> 
 						 </div>
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="PhoneThree">Phone Three</label>
 							<input class="form-control" type="text" name="PhoneThree" id="PhoneThree" placeholder="Phone Three" value="<%= res.getString("phone_three") == null ? "" : res.getString("phone_three") %>" maxlength="20"> 
 					 	</div>					 
 					</div>
@@ -191,15 +193,12 @@
 				<div class="form-group">
 					<div class="row">
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="EmailOne">Email One</label>
 							<input class="form-control" type="text" name="EmailOne" id="EmailOne" placeholder="Email One" <%= res.getString("email_one") == null ? "" : res.getString("email_one") %>" maxlength="80"> 
 					 	 </div>
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="EmailTwo">Email Two</label>
 							<input class="form-control" type="text" name="EmailTwo" id="EmailTwo" placeholder="Email Two" value="<%= res.getString("email_two") == null ? "" : res.getString("email_two") %>" maxlength="80"> 
 						 </div>
 						 <div class="col-md-4">
-							<label class="control-label labelColorSmall" for="EmailThree">Email Three</label>
 							<input class="form-control" type="text" name="EmailThree" id="EmailThree" placeholder="Email Three" value="<%= res.getString("email_three") == null ? "" : res.getString("email_three") %>" maxlength="80"> 
 					 	 </div>					 
 					</div>
@@ -210,7 +209,7 @@
 				</div>			 
 			  	<div class="row">	
 					<div class="col-md-6">
-						<label class="control-label labelColorSmall" for="OperStartTime">StartTime</label>
+						<label class="control-label labelColorSmall" for="OperStartTime">Start Time</label>
 						<select name="OperStartTime" id="OperStartTime" class="form-control">
 						  	<option value="07:00:00" <%= StartTime.equals("07:00:00") ? "selected" : "" %>>7:00</option>								
 						  	<option value="07:30:00" <%= StartTime.equals("07:30:00") ? "selected" : "" %>>7:30</option>

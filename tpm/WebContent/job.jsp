@@ -32,18 +32,18 @@
 
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
-		
 		<script type='text/javascript' src='../tpm/js/moment.min.js'></script>
 		
 		<link rel="stylesheet" href="css/style.css">			
 		<script src="js/script.js" type="text/javascript"></script>
 		
 		<script type="text/javascript">	
-		  
+			var $v_1_12_1 = jQuery.noConflict();
+					  
 			window.onscroll = function() {scrollFunction()};	
 	
 			$(document).ready(function() {	               
-	            $("#datepicker").datepicker({
+				$v_1_12_1("#datepicker").datepicker({
 	            	dateFormat: "yy-mm-dd",
             	    ignoreReadonly: true,
             	    allowInputToggle: true,	
@@ -53,7 +53,7 @@
 	           		 }
 	       		 })
             
-	            $("#SearchBtn").on('click', function(e){
+	            $v_1_12_1("#SearchBtn").on('click', function(e){
 	            	var vCustomerSeatch = document.getElementById("theSearchCustomer").value;
 				    e.preventDefault();
 					$.ajax({
@@ -135,16 +135,18 @@
 			</div>	
 			<div class="container">
 				<div class="row">
-					 <div class="col-md-12">
-						<label class="control-label labelColorSmall" for="JobId">Job Id</label>
-						<input class="form-control" type="text" name="JobId" id="JobId" value="<%= request.getAttribute("JobId") == null ? "" : request.getAttribute("JobId") %>" readonly> 
-			 		 </div>		
+					 <div class="col-md-6">
+						<input class="form-control" type="text" name="JobId" id="JobId" value="<%= request.getAttribute("JobId") == null ? "" : request.getAttribute("JobId") %>" readonly placeholder="Job Id"> 
+			 		 </div>	
+			 		<div class="col-md-6"> 			 		
+						<input type="text" class="form-control" id="datepicker" name="JobDate" value="<%= request.getAttribute("JobDate") == null ? "" : request.getAttribute("JobDate") %>" placeholder="Job Date">		
+					    <small  id="Error_datepicker" class="ErrorLabel">Field Is Required</small> 					
+					</div>	
 			 	</div>	 
-			 	<br>
 			 	<hr>
 			 	<div class="form-group labelColorOne">
 					<h5>Customer
-						<button type="button" class="btn btn-outline-dark btn-sm" onclick="window.location.href='customer.jsp'; return false;" title="Add Customer">+</button>
+						<!-- <button type="button" class="btn btn-outline-dark btn-sm" onclick="window.location.href='customer.jsp'; return false;" title="Add Customer">+</button> -->
 					</h5>
 				</div>			
 				
@@ -153,14 +155,12 @@
 				<div class="form-group">
 					<div class="row">
 						 <div class="col-md-6">						 
-							<label class="control-label labelColorSmall" for="CustomerName">Customer</label>							
-							<input type="text" class="form-control labelRedBold" name="CustomerName" id="CustomerName" value="<%= request.getAttribute("CustomerName") == null ? "" : request.getAttribute("CustomerName") %>" readonly>
-							<label class="ErrorLabel" id="Error_CustomerName">Field Is Required</label>				 	 							
+							<input type="text" class="form-control" name="CustomerName" id="CustomerName" placeholder="Customer" value="<%= request.getAttribute("CustomerName") == null ? "" : request.getAttribute("CustomerName") %>" readonly>
+							<small id="Error_CustomerName" class="ErrorLabel">Field Is Required</small> 			 	 							
 						 </div>
 						 <div class="col-md-6">
-						 <label class="control-label labelColorSmall">Search Customer</label>
 							<div class="input-group"> 							 
-							    <input type="text" class="form-control labelColorSmall" name="theSearchCustomer" id="theSearchCustomer" autofocus="autofocus">
+							    <input type="text" class="form-control" name="theSearchCustomer" id="theSearchCustomer" autofocus="autofocus" placeholder="Search Customer">
 							    <span class="input-group-btn">
 							    	<button type="button" id="SearchBtn" class="btn btn-outline-dark">Search</button>
 							  	</span>				  	
@@ -173,17 +173,10 @@
 				<div class="container" id="SearchCustomers">
 				</div>
 				
-				<div class="form-group labelColorOne">
-					<h5>Date</h5>
-				</div>
-		 		<div class="form-group">	
-				  	<input type="text" class="form-control" id="datepicker" name="JobDate" value="<%= request.getAttribute("JobDate") == null ? "" : request.getAttribute("JobDate") %>" placeholder="Job Date">		
-					<label class="ErrorLabel" id="Error_datepicker">Field Is Required</label>
-				</div>	
-				<hr>
-				<div class="form-group labelColorOne">
+			
+				<div class="labelColorOne">
 					<h5>Worker
-						<button type="button" class="btn btn-outline-dark btn-sm" onclick="window.location.href='worker.jsp'; return false;" title="Add Job">+</button>
+						<!-- <button type="button" class="btn btn-outline-dark btn-sm" onclick="window.location.href='worker.jsp'; return false;" title="Add Job">+</button> -->
 					</h5>
 				</div>	
 				<div class="container">
@@ -198,7 +191,6 @@
 	 			 <br>
 	 			 <div class="container">
 		 			<div class="form-group">
-		  				<label class="control-label labelColorSmall" for="comment">Comment</label>
 		  				<textarea class="form-control" rows="5" id="Comments" name="Comments" maxlength="500" placeholder="Comments"><%= request.getAttribute("Comments") == null ? "" : request.getAttribute("Comments") %></textarea>
 					</div>   			 
 		 			 <hr>
